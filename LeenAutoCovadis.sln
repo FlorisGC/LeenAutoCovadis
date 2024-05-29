@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeenAutoCovadis.Api", "LeenAutoCovadis.Api\LeenAutoCovadis.Api.csproj", "{B5FD6CD3-500D-486C-8DEB-21683BC131DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeenAutoCovadis.Api", "LeenAutoCovadis.Api\LeenAutoCovadis.Api.csproj", "{B5FD6CD3-500D-486C-8DEB-21683BC131DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeenAutoCovadis.shared", "LeenAutoCovadis.shared\LeenAutoCovadis.shared.csproj", "{CF4D76AD-D4A1-4E92-BF96-F9DBD74CDA09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B5FD6CD3-500D-486C-8DEB-21683BC131DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5FD6CD3-500D-486C-8DEB-21683BC131DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5FD6CD3-500D-486C-8DEB-21683BC131DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4D76AD-D4A1-4E92-BF96-F9DBD74CDA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4D76AD-D4A1-4E92-BF96-F9DBD74CDA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4D76AD-D4A1-4E92-BF96-F9DBD74CDA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4D76AD-D4A1-4E92-BF96-F9DBD74CDA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
