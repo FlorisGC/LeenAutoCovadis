@@ -2,6 +2,7 @@
 using LeenAutoCovadis.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeenAutoCovadis.Api.Migrations
 {
     [DbContext(typeof(CovadisContext))]
-    partial class CovadisContextModelSnapshot : ModelSnapshot
+    [Migration("20240530111324_add-blazor")]
+    partial class addblazor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -112,17 +115,10 @@ namespace LeenAutoCovadis.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Email = "admin@example.com",
-                            Name = "Admin",
-                            Password = "string"
-                        },
-                        new
-                        {
                             Id = 2,
                             Email = "user@example.com",
                             Name = "User",
-                            Password = "string"
+                            Password = "UserPassword"
                         });
                 });
 

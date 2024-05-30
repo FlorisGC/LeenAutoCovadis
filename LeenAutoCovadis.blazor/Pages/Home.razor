@@ -1,0 +1,39 @@
+﻿@page "/"
+
+@using LeenAutoCovadis.shared.Dtos;
+@using LeenAutoCovadis.shared.Clients;
+@using LeenAutoCovadis.blazor.Components
+
+<PageTitle>Home</PageTitle>
+<PageHeader Size="PageHeader.Sizes.H1">Users</PageHeader>
+
+@if (Users != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public UserDto[] Users { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+}

@@ -14,7 +14,7 @@ public class UserController(UserService userService) : ControllerBase
 {
     private readonly UserService userService = userService;
 
-    [Authorize]
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult GetUsers()
     {
