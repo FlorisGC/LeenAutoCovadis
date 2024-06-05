@@ -1,8 +1,11 @@
 ﻿@page "/"
+@inject UserHttpClient UserHttpClient;
+@attribute [Authorize]
 
 @using LeenAutoCovadis.shared.Dtos;
 @using LeenAutoCovadis.shared.Clients;
 @using LeenAutoCovadis.blazor.Components
+@using Microsoft.AspNetCore.Authorization
 
 <PageTitle>Home</PageTitle>
 <PageHeader><h5>Users</h5></PageHeader>
