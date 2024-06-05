@@ -22,10 +22,17 @@ namespace LeenAutoCovadis.Api.Data
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
+                    Id = 1,
+                    Name = "Admin",
+                    Email = "admin@example.com",
+                    Password = "string"
+                },
+                new User
+                {
                     Id = 2,
                     Name = "User",
                     Email = "user@example.com",
-                    Password = "UserPassword"
+                    Password = "string"
                 });
 
             modelBuilder.Entity<Role>().HasData(
