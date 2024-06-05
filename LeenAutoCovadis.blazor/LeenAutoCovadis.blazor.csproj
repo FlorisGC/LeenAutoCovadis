@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.5" PrivateAssets="all" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +19,9 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
+    <Folder Include="Handler\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Pages\Login\" />
   </ItemGroup>
 
 </Project>

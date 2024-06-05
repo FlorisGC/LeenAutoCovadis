@@ -2,6 +2,7 @@
 
 using LeenAutoCovadis.Api.Data;
 using LeenAutoCovadis.Api.Models;
+using LeenAutoCovadis.shared.Constants;
 using LeenAutoCovadis.shared.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -22,10 +23,10 @@ public class TokenService(IConfiguration configuration, CovadisContext dbContext
 
         var claims = new List<Claim>
         {
-            new Claim("id", user.Id.ToString()),
-            new Claim("name", user.Name),
-            new Claim(nameof(User.Email).ToLower(), user.Email),
-            new Claim("roles", getRoles(user))
+            new Claim(Claims.Id, user.Id.ToString()),
+            new Claim(Claims.Name, user.Name),
+            new Claim(Claims.Email, user.Email),
+            new Claim(Claims.Role, getRoles(user))
         };
 
         var singingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
