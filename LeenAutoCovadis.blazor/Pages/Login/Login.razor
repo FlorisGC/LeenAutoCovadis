@@ -19,6 +19,8 @@
                 <label for="email">Email address</label>
             </div>
 
+            <br />
+
             <div class="form-floating">
                 <InputText id="password" class="form-control" @bind-Value="Request.Password" placeholder="Password" type="password" />
                 <label for="password">Password</label>
@@ -36,6 +38,7 @@
 
     private async Task LoginAsync()
     {
+        Console.WriteLine("LoginAsync");
         var response = await AuthHttpClient.Login(Request);
 
         if(response is null)
