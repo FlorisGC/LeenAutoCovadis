@@ -16,7 +16,7 @@ public class AuthHttpClient
     public AuthHttpClient(IHttpClientFactory httpClientFactory)
     {
         client = httpClientFactory.CreateClient();
-        client.BaseAddress = new Uri("https://localhost:7024/Auth");
+        client.BaseAddress = new Uri("https://localhost:7166/Auth");
     }
 
     public async Task<AuthResponse?> Login(LoginRequest loginRequest)
