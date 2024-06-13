@@ -28,6 +28,7 @@ public class UserController(UserService userService) : ControllerBase
         return Ok(user);
     }
 
+    [AllowAnonymous]
    // [Authorize(Roles = nameof(UserRole.Admin))]
     [HttpPost]
     public IActionResult CreateUser([FromBody] User user)
@@ -37,14 +38,16 @@ public class UserController(UserService userService) : ControllerBase
         return Ok(createdUser);
     }
 
-    [Authorize(Roles = nameof(UserRole.User))]
+    [AllowAnonymous]
+    //[Authorize(Roles = nameof(UserRole.User))]
     [HttpPut("{id}")]
     public IActionResult UpdateUser(int id, [FromBody] User user)
     {
         throw new NotImplementedException();
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin) + "," + nameof(UserRole.User))]
+    [AllowAnonymous]
+    //[Authorize(Roles = nameof(UserRole.Admin) + "," + nameof(UserRole.User))]
     [HttpPatch("assign-role")]
     public IActionResult AssignRole([FromBody] AssignRoleRequest request)
     {
