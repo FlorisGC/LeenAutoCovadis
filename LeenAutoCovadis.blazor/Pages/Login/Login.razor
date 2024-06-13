@@ -29,6 +29,12 @@
             <br />
 
             <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
+
+            <br />
+            <br />
+            <br />
+
+            <button class="btn btn-primary w-100 py-2" @onclick="NavigateToRegister">Register</button>
         </EditForm>
     </div>
 </div>
@@ -39,16 +45,21 @@
     private async Task LoginAsync()
     {
         Console.WriteLine("LoginAsync");
-        var response = await AuthHttpClient.Login(Request); 
+        var response = await AuthHttpClient.Login(Request);
 
-        if(response is null)
+        if (response is null)
         {
-            return;   
+            return;
         }
 
         await LocalStorageService.SetItemAsync("token", response.Token);
         await AuthenticationStateProvider.GetAuthenticationStateAsync();
 
         NavigationManager.NavigateTo("/");
+    }
+
+    private void NavigateToRegister()
+    {
+        NavigationManager.NavigateTo("/register");
     }
 }

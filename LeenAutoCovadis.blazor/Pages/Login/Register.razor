@@ -1,0 +1,61 @@
+﻿@page "/register"
+@using LeenAutoCovadis.blazor.Components
+@using LeenAutoCovadis.shared.Clients;
+@using LeenAutoCovadis.blazor.Services;
+@using LeenAutoCovadis.shared.Requests;
+
+@inject AuthHttpClient AuthHttpClient;
+@inject NavigationManager NavigationManager;
+
+<div class="d-flex align-items-center login-alignment">
+    <div class="form-register w-100 h-100">
+        <EditForm Model="RegisterRequest" OnValidSubmit="RegisterAsync">
+            <PageHeader Size="PageHeader.Sizes.H2">Register</PageHeader>
+
+            <br />
+
+            <div class="form-floating">
+                <InputText id="name" class="form-control" @bind-Value="RegisterRequest.Name" placeholder="Name" />
+                <label for="name">Name</label>
+            </div>
+
+            <br />
+
+            <div class="form-floating">
+                <InputText id="email" class="form-control" @bind-Value="RegisterRequest.Email" placeholder="Email" />
+                <label for="email">Email address</label>
+            </div>
+
+            <br />
+
+            <div class="form-floating">
+                <InputText id="password" class="form-control" @bind-Value="RegisterRequest.Password" placeholder="Password" type="password" />
+                <label for="password">Password</label>
+            </div>
+
+            <br />
+
+            <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private readonly RegisterRequest RegisterRequest = new();
+
+    private async Task RegisterAsync()
+    {
+        var response = await AuthHttpClient.PostAsJsonAsync("User/register", RegisterRequest);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle successful registration, e.g., redirect to login
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            // Handle registration failure
+        }
+    }
+}
