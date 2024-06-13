@@ -28,7 +28,7 @@ public class UserController(UserService userService) : ControllerBase
         return Ok(user);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+   // [Authorize(Roles = nameof(UserRole.Admin))]
     [HttpPost]
     public IActionResult CreateUser([FromBody] User user)
     {
