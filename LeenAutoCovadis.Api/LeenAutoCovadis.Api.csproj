@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LeenAutoCovadis.blazor\LeenAutoCovadis.blazor.csproj" />
     <ProjectReference Include="..\LeenAutoCovadis.shared\LeenAutoCovadis.shared.csproj" />
   </ItemGroup>
 

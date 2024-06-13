@@ -1,6 +1,7 @@
 
 using LeenAutoCovadis.Api.Data;
 using LeenAutoCovadis.Api.Services;
+using LeenAutoCovadis.shared.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ namespace LeenAutoCovadis.Api
             services.AddTransient<UserService>();
             services.AddTransient<AuthService>();
             services.AddTransient<TokenService>();
+            services.AddScoped<ICurrentUserContext, CurrentUserContext>();
 
             // Add database context
             services.AddDbContext<CovadisContext>(options =>
@@ -81,7 +83,22 @@ namespace LeenAutoCovadis.Api
                .RequireAuthenticatedUser()
                .Build());
 
+
+            services.AddHttpContextAccessor();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             var app = builder.Build();
+
+            app.UseCors();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

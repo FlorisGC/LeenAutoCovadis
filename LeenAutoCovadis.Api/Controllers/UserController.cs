@@ -1,5 +1,4 @@
-﻿
-using LeenAutoCovadis.Api.Models;
+﻿using LeenAutoCovadis.Api.Models;
 using LeenAutoCovadis.Api.Services;
 using LeenAutoCovadis.shared.Enums;
 using LeenAutoCovadis.shared.Requests;
@@ -14,7 +13,6 @@ public class UserController(UserService userService) : ControllerBase
 {
     private readonly UserService userService = userService;
 
-    [Authorize]
     [HttpGet]
     public IActionResult GetUsers()
     {
@@ -26,10 +24,11 @@ public class UserController(UserService userService) : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetUser(int id)
     {
-        throw new NotImplementedException();
+        var user = userService.GetUserById(id);
+        return Ok(user);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+   // [Authorize(Roles = nameof(UserRole.Admin))]
     [HttpPost]
     public IActionResult CreateUser([FromBody] User user)
     {
