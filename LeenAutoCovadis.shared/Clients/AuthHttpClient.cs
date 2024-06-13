@@ -34,4 +34,11 @@ public class AuthHttpClient
 
         return authResponse;
     }
+
+    public async Task<HttpResponseMessage> PostAsJsonAsync<T>(string url, T data)
+    {
+        var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+        var response = await client.PostAsync(url, content);
+        return response;
+    }
 }

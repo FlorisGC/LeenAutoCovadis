@@ -27,7 +27,6 @@
   <ItemGroup>
     <Folder Include="Components\" />
     <Folder Include="Handler\" />
-    <Folder Include="Pages\Login\" />
   </ItemGroup>
 
 </Project>
