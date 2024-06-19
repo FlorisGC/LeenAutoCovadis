@@ -60,4 +60,20 @@ public class UserController(UserService userService) : ControllerBase
 
         return Ok(result);
     }
+
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] RegisterRequest registerRequest)
+    {
+        var user = new User
+        {
+            Name = registerRequest.Name,
+            Email = registerRequest.Email,
+            Password = registerRequest.Password // Ensure you handle password hashing
+        };
+
+        var createdUser = userService.CreateUser(user);
+        return Ok(createdUser);
+    }
+
 }
