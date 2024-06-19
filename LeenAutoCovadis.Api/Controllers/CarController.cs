@@ -3,6 +3,7 @@ using LeenAutoCovadis.Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LeenAutoCovadis.Api.Controllers
 {
@@ -36,6 +37,11 @@ namespace LeenAutoCovadis.Api.Controllers
         {
             Car prevCar = covadisContext.Cars.SingleOrDefault(a => a.Id == id);
 
+            if (prevCar == null)
+            {
+                return NotFound();
+            }
+
             prevCar.Model = cars.Model;
             prevCar.Type = cars.Type;
             prevCar.Kilometers = cars.Kilometers;
@@ -51,10 +57,41 @@ namespace LeenAutoCovadis.Api.Controllers
         [HttpDelete]
         public ActionResult DeleteCar(int id)
         {
-            covadisContext.Cars.Where(a => a.Id == id)
-                .ExecuteDelete();
+            var car = covadisContext.Cars.SingleOrDefault(a => a.Id == id);
+
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            covadisContext.Cars.Remove(car);
             covadisContext.SaveChanges();
             return Ok();
+        }
+
+        [HttpPost("check-and-add")]
+        public ActionResult CheckAndAddTestCar()
+        {
+            if (!covadisContext.Cars.Any())
+            {
+                var testCar = new Car
+                {
+                    Model = "Test Model",
+                    Type = "Test Type",
+                    StartKilometers = 0,
+                    EndKilometers = 0,
+                    Kilometers = 0,
+                    StartAddress = "Test Start Address",
+                    EndAddress = "Test End Address",
+                    Available = true,
+                    User = covadisContext.Users.FirstOrDefault() // Assign to the first user
+                };
+
+                covadisContext.Cars.Add(testCar);
+                covadisContext.SaveChanges();
+                return Ok(testCar);
+            }
+            return Ok("Cars already exist");
         }
     }
 }
