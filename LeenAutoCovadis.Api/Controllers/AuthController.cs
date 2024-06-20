@@ -8,6 +8,7 @@ namespace LeenAutoCovadis.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[AllowAnonymous]
 public class AuthController(AuthService authService) : ControllerBase
 {
     [AllowAnonymous]

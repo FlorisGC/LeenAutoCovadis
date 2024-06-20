@@ -9,6 +9,7 @@ namespace LeenAutoCovadis.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[AllowAnonymous]
 public class UserController(UserService userService) : ControllerBase
 {
     private readonly UserService userService = userService;
