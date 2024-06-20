@@ -1,5 +1,6 @@
 ﻿using LeenAutoCovadis.Api.Data;
 using LeenAutoCovadis.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace LeenAutoCovadis.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class CarController : ControllerBase
     {
         private readonly CovadisContext covadisContext;

@@ -27,6 +27,9 @@ namespace LeenAutoCovadis.blazor
             builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<LeenAutoCovadisAuthenticationStateProvider>());
             builder.Services.AddAuthorizationCore();
 
+
+            builder.Services.AddScoped<CarHttpClient>();
+
             await builder.Build().RunAsync();
         }
     }

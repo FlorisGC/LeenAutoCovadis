@@ -1,5 +1,5 @@
 ﻿@page "/"
-@inject UserHttpClient UserHttpClient;
+@inject CarHttpClient CarHttpClient;
 @attribute [Authorize]
 
 @using LeenAutoCovadis.shared.Dtos;
@@ -8,35 +8,58 @@
 @using Microsoft.AspNetCore.Authorization
 
 <PageTitle>Home</PageTitle>
-<PageHeader><h5>Users</h5></PageHeader>
+<PageHeader><h5>Car</h5></PageHeader>
 
-@if (Users != null)
+@if (Car != null)
 {
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Email</th>
-                <th>Role</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Start kilometers</th>
+                <th>End kilometers</th>
+                <th>Kilometers</th>
+                <th>Start address</th>
+                <th>End address</th>
+                <th>Available</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach (var user in Users)
-            {
-                <tr>
-                    <td>@user.Id</td>
-                    <td>@user.Name</td>
-                    <td>@user.Email</td>
-                </tr>
-            }
+            <tr>
+                <td>@Car.Id</td>
+                <td>@Car.Model</td>
+                <td>@Car.Type</td>
+                <td>@Car.StartKilometers</td>
+                <td>@Car.EndKilometers</td>
+                <td>@Car.Kilometers</td>
+                <td>@Car.StartAddress</td>
+                <td>@Car.EndAddress</td>
+                @if (Car.Available == true)
+                {
+                    <td>Yes</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+            </tr>
         </tbody>
     </table>
 }
+else
+{
+    <p><em>Loading...</em></p>
+}
 
 @code {
-    public UserDto[] Users { get; set; }
+    private CarDto? Car;
 
     protected override async Task OnInitializedAsync()
     {
+        Car = await CarHttpClient.GetCar();
+        Console.WriteLine("Car: " + Car.ToString);
     }
 }
